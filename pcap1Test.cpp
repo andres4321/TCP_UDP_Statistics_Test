@@ -49,6 +49,14 @@ namespace {
 		EXPECT_EQ(0x230AA8C0, TestAdapter.LocalAddresses[3]) << "Local address 192.168.10.35 not loaded correctly.";
 		EXPECT_EQ(0x2D0AA8C0, TestAdapter.LocalAddresses[4]) << "Local address 192.168.10.45 not loaded correctly.";
 
+		EXPECT_EQ(0x060AA8C0, TestAdapter.DetectRemoteAddress( (unsigned int)0x050AA8C0, (unsigned int) 0x060AA8C0 ) );
+		EXPECT_EQ(0x060AA8C0, TestAdapter.DetectRemoteAddress((unsigned int)0x060AA8C0, (unsigned int)0x050AA8C0));
+
+		EXPECT_EQ(0x240AA8C0, TestAdapter.DetectRemoteAddress((unsigned int)0x190AA8C0, (unsigned int)0x240AA8C0));
+		EXPECT_EQ(0x240AA8C0, TestAdapter.DetectRemoteAddress((unsigned int)0x240AA8C0, (unsigned int)0x190AA8C0));
+
+		EXPECT_EQ(0x2F0AA8C0, TestAdapter.DetectRemoteAddress((unsigned int)0x2D0AA8C0, (unsigned int)0x2F0AA8C0));
+		EXPECT_EQ(0x2F0AA8C0, TestAdapter.DetectRemoteAddress((unsigned int)0x2F0AA8C0, (unsigned int)0x2D0AA8C0));
 	}
 
 
